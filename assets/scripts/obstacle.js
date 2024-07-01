@@ -20,6 +20,7 @@ class Obstacle {
             this.markedForDeletion = true;
             this.game.obstacles = this.game.obstacles.filter(obstacle => !obstacle.markedForDeletion);
             console.log(this.game.obstacles.length);
+            this.game.score++;
             if (this.game.obstacles.length <= 0) this.game.gameOver = true;
         }
     }

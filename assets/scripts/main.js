@@ -9,7 +9,7 @@ class Game {
         this.background = new Background(this);
         this.player = new Player(this);
         this.obstacles =[];
-        this.numberOfObstacles = 2;
+        this.numberOfObstacles = 3;
         this.gravity;
         this.speed;
         this.score;
@@ -37,6 +37,7 @@ class Game {
         this.canvas.width= width;
             this.canvas.height= height;
             this.ctx.fillStyle = 'blue';
+            this.ctx.font = '30px Arsenal SC';
             this.width = this.canvas.width;
             this.height= this.canvas.height;
             this.ratio = this.height / this.baseHeight; 
@@ -55,7 +56,7 @@ class Game {
     render (){
         this.background.update();
         this.background.draw();
-        this.drawStatusText
+        this.drawStatusText();
         this.player.update();
         this.player.draw();
         this.obstacles.forEach (obstacle => {
