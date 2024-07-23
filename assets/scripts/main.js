@@ -9,7 +9,7 @@ class Game {
         this.background = new Background(this);
         this.player = new Player(this);
         this.obstacles =[];
-        this.numberOfObstacles = 3;
+        this.numberOfObstacles = 1;
         this.gravity;
         this.speed;
         this.score;
@@ -40,6 +40,8 @@ class Game {
         this.ctx.fillStyle = 'blue';
         this.ctx.font = '30px Arsenal SC';
         this.ctx.textAlign='right';
+        this.ctx.lineWidth = 3;
+        this.ctx.strokeStyle = 'white';
         this.width = this.canvas.width;
         this.height= this.canvas.height;
         this.ratio = this.height / this.baseHeight; 
@@ -76,6 +78,13 @@ class Game {
             this.obstacles.push(new Obstacle(this, firstX + i * obstacleSpacing));
         }
     }
+    checkCollision(a, b){
+        const dx = a.collisionX - b.collisionX;
+        const dy = a.collisionX - bc.collisionY;
+        const distance = Math.hypot(dx, dy);
+        const sumOfRadii = a.collisionRadius + bcollisionRadius;
+        return distance <= sumOfRadii;
+    }
     formatTimer (){
         return (this.timer * 0.001).toFixed(1);
     }
@@ -87,7 +96,7 @@ class Game {
         if (this.gameOver){
             this.ctx.textAlign = 'center';
             this.ctx.font = '30px Bungee';
-            this.ctx.FillText('GAME OVER', this.width * 0.5, this.height *0.5)
+            this.ctx.fillText('GAME OVER', this.width * 0.5, this.height *0.5)
         }
         this.ctx.restore();
     }
@@ -108,7 +117,7 @@ window.addEventListener('load', function(){
         lastTime = timeStamp;
         ctx.clearRect(0,0, canvas.width, canvas.height);
         game.render(deltaTime);
-       requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
     }
     
     requestAnimationFrame(animate);
