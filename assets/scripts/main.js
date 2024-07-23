@@ -9,9 +9,11 @@ class Game {
         this.background = new Background(this);
         this.player = new Player(this);
         this.obstacles =[];
-        this.numberOfObstacles = 1;
+        this.numberOfObstacles = 3;
         this.gravity;
         this.speed;
+        this.minSpeed;
+        this.maxSpeed;
         this.score;
         this.gameOver;
         this.timer;
@@ -28,6 +30,7 @@ class Game {
         // keyboard controls
         window.addEventListener('keydown', e => {
             if (e.key === ' ' || e.key === 'Enter') this.player.flap();
+            if (e.key == 'Shift' || e.key.toLowerCase () ==='c') this.player.startCharge();
         });
         // touch controls
         this.canvas.addEventListener('touchstart', e => {
@@ -48,6 +51,8 @@ class Game {
 
         this.gravity = 0.15 * this.ratio;
         this.speed = 2 * this.ratio;
+        this.minSpeed = this.speed;
+        this.maxSpeed = this.speed *5;
         this.background.resize();
         this.player.resize();    
         this.createObstacles();
@@ -80,9 +85,9 @@ class Game {
     }
     checkCollision(a, b){
         const dx = a.collisionX - b.collisionX;
-        const dy = a.collisionX - bc.collisionY;
+        const dy = a.collisionY - b.collisionY;
         const distance = Math.hypot(dx, dy);
-        const sumOfRadii = a.collisionRadius + bcollisionRadius;
+        const sumOfRadii = a.collisionRadius + b.collisionRadius;
         return distance <= sumOfRadii;
     }
     formatTimer (){
@@ -94,12 +99,27 @@ class Game {
         this.ctx.textAlign = 'left';
         this.ctx.fillText('Timer: ' + this.formatTimer(), 10, 30);
         if (this.gameOver){
+            if (this.player.collided){
+                this.message1 ="Getting rusty?";
+                this.message2 ="Collision time " + this.formatTimer() + ' seconds!';
+            } else if (this.obstacles.length <= 0){
+                this.message1 ="Nailed it!";
+                this.message2 ="Can you do it faster than " + this.formatTimer () + 'seconds?';
+            }
             this.ctx.textAlign = 'center';
             this.ctx.font = '30px Bungee';
-            this.ctx.fillText('GAME OVER', this.width * 0.5, this.height *0.5)
+            this.ctx.fillText(this.message1, this.width * 0.5, this.height *0.5 -40)
+            this.ctx.font = '15px Bungee';
+            this.ctx.fillText(this.message2, this.width * 0.5, this.height *0.5 -20 )
+            this.ctx.fillText("Press 'R' to try again!", this.width * 0.5, this.height *0.5 )
+        }
+        if(this.player.energy <=20)this.ctx.fillStyle = 'red';
+        else if (this.player.energy >= this.player.maxEnergy) this.ctx.fillStyle ='orangered';
+        for (let i = 0; i < this.player.energy; i++){
+            this.ctx.fillRect(10, this.height -10 - this.player.barSize *i, this.player.barSize *5 ,this.player.barSize);
         }
         this.ctx.restore();
-    }
+    }   
 }
 
 window.addEventListener('load', function(){
@@ -117,7 +137,7 @@ window.addEventListener('load', function(){
         lastTime = timeStamp;
         ctx.clearRect(0,0, canvas.width, canvas.height);
         game.render(deltaTime);
-      requestAnimationFrame(animate);
+        requestAnimationFrame(animate);
     }
     
     requestAnimationFrame(animate);
