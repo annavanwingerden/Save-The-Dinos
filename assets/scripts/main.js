@@ -9,7 +9,7 @@ class Game {
         this.background = new Background(this);
         this.player = new Player(this);
         this.obstacles =[];
-        this.numberOfObstacles = 3;
+        this.numberOfObstacles = 10;
         this.gravity;
         this.speed;
         this.minSpeed;
@@ -17,6 +17,13 @@ class Game {
         this.score;
         this.gameOver;
         this.timer;
+        this.message1;
+        this.message2; 
+        this.eventTimer = 0; 
+        this.eventInterval = 150;
+        this.eventUpdate = false; 
+        this.touchStartX;
+        this.swipeDistance = 50;
 
         this.resize(window.innerWidth, window.innerHeight);
 
@@ -35,12 +42,18 @@ class Game {
         // touch controls
         this.canvas.addEventListener('touchstart', e => {
             this.player.flap();
+            this.touchStartX = e.changedTouches[0].pageX;
         });
+        this.canvas.addEventListener('touchmove', e => {
+            if (e.changedTouches[0].pageX - this.touchStartX >30){
+                this.player.startCharge();
+            }
+        })
     }
     resize (width, height){
         this.canvas.width= width;
         this.canvas.height= height;
-        this.ctx.fillStyle = 'blue';
+        //this.ctx.fillStyle = 'blue';
         this.ctx.font = '30px Arsenal SC';
         this.ctx.textAlign='right';
         this.ctx.lineWidth = 3;
@@ -92,6 +105,15 @@ class Game {
     }
     formatTimer (){
         return (this.timer * 0.001).toFixed(1);
+    }
+    handlePeriodicEvents(deltaTime){
+        if(this.eventTimer <this.eventInterval){
+            this.eventTimer += deltaTime;
+            this.eventUpdate = false;
+        } else {
+            this.eventTimer = this.eventTimer % this.eventInterval;
+            this.eventUpdate = true;
+        }
     }
     drawStatusText(){
         this.ctx.save();

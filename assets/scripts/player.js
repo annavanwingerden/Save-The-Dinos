@@ -28,13 +28,15 @@ class Player {
         this.handleEnergy();
         this.y += this.speedY;
         this.collisionY = this.y + this.height *0.5;
-        if (!this.isTouchingBottom()){
+        if (!this.isTouchingBottom()&& !this.charging) {
             this.speedY += this.game.gravity;
+        } else {
+            this.speedY = 0;
         }
         //bottom boundary
         if (this.isTouchingBottom()){
             this.y = this.game.height - this.height;
-        }
+        } 
     }
     resize(){
         this.width = this.spriteWidth * this.game.ratio;
@@ -62,14 +64,16 @@ class Player {
         return this.y >= this.game.height - this.height;
     }
     handleEnergy(){
-        if (this.energy < this.maxEnergy){  
-            this.energy += 0.1;
-        }
-        if (this.charging){
-            this. energy -=1;
-            if (this.energy <= 0){
-                this.energy =0; 
-                this.stopCharge();
+        if (this.game.eventUpdate){
+            if (this.energy < this.maxEnergy){  
+                this.energy += 1;
+            }
+            if (this.charging){
+                this. energy -= 5;
+                if (this.energy <= 0){
+                    this.energy =0; 
+                    this.stopCharge();
+            }
         }
     }
 }

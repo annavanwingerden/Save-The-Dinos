@@ -31,6 +31,7 @@ class Obstacle {
         if (this.game.checkCollision(this, this.game.player)){
             this.game.gameOver = true;
             this.game.player.collided = true;
+            this.game.player.stopCharge();
         }
     }
     draw (){
