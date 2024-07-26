@@ -78,6 +78,7 @@ class Game {
     }
     render (deltaTime){
        if (!this.gameOver) this.timer += deltaTime;
+        this.handlePeriodicEvents(deltaTime); 
         this.background.update();
         this.background.draw();
         this.drawStatusText();
