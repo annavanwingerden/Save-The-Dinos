@@ -14,7 +14,7 @@ class Player {
         this.collisionRadius;
         this.collided;
         this.energy = 30;
-        this.maxEnergy = this.energy *2;
+        this.maxEnergy = this.energy * 2;
         this.minEnergy = 15;
         this.charging = false;
     }
@@ -66,7 +66,7 @@ class Player {
     handleEnergy(){
         if (this.game.eventUpdate){
             if (this.energy < this.maxEnergy){  
-                this.energy += 1;
+                this.energy += 0.5;
             }
             if (this.charging){
                 this. energy -= 5;

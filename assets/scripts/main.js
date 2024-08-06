@@ -16,7 +16,7 @@ class Game {
         this.maxSpeed;
         this.score;
         this.gameOver;
-        this.timer;
+        this.timer = 0; 
         this.message1;
         this.message2; 
         this.eventTimer = 0; 
@@ -156,6 +156,7 @@ window.addEventListener('load', function(){
 
     let lastTime = 0;
     function animate (timeStamp){
+        if (!lastTime ) lastTime = timeStamp;
         const deltaTime = timeStamp - lastTime;
         lastTime = timeStamp;
         ctx.clearRect(0,0, canvas.width, canvas.height);

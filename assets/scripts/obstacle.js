@@ -18,13 +18,16 @@ class Obstacle {
         this.y += this.speedY;
         this.collisionX = this.x + this.scaledWidth * 0.5;
         this.collisionY = this.y + this.scaledHeight * 0.5;
-        if (this.y <= 0 || this.y >= this.game.height - this.scaledHeight){
-            this.speedY*=-1;
+        if (!this.game.gameOver) {
+            if (this.y <= 0 || this.y >= this.game.height - this.scaledHeight){
+                this.speedY*=-1;
+            }
+        } else {
+            this.speedY += 0.1;
         }
         if (this.isOffScreen()){
             this.markedForDeletion = true;
             this.game.obstacles = this.game.obstacles.filter(obstacle => !obstacle.markedForDeletion);
-            console.log(this.game.obstacles.length);
             this.game.score++;
             if (this.game.obstacles.length <= 0) this.game.gameOver = true;
         }
@@ -45,6 +48,6 @@ class Obstacle {
         this.scaledHeight = this.spriteHeight * this.game.ratio;
     }
     isOffScreen(){
-        return this.x < -this.scaledWidth;
+        return this.x < -this.scaledWidth || this.y > this.game.height;
     }
 }
