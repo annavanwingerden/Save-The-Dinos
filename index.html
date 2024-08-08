@@ -8,15 +8,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href = "style.css">
-    <!-- This is the source tutorial I'm following: https://www.youtube.com/watch?v=vGRbs-HqBJE. 
-     Currently at 1:17:47
-     Plan: change the background, character style etc. 
-     Add a new featue of my own
-     Cycling game ft. Oxford & tourist dodging -->
 </head>
 <body>
+    <div id="overlay">
+        <h1>Welcome to the Game!</h1>
+        <p>Use the following controls to play:</p>
+        <ul>
+            <li>Flap: Spacebar or Enter</li>
+            <li>Charge: Shift or C</li>
+            <li>Touch to Flap</li>
+            <li>Swipe to Charge</li>
+        </ul>
+        <button onclick="startGame()">Start Game</button>
+    </div>
     <canvas id ="canvas1"></canvas>
-
+    
     <div class ="assets">
         <img id ="background" src = "assets/images/background_single.png">
         <img id ="background2" src = "assets/images/background_single2.png">

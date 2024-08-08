@@ -124,17 +124,16 @@ class Game {
         if (this.gameOver){
             if (this.player.collided){
                 this.message1 ="Getting rusty?";
-                this.message2 ="Collision time " + this.formatTimer() + ' seconds!';
+                this.message2 ="Collision time " + this.formatTimer() + ' seconds! Refresh the page to begin again!';
             } else if (this.obstacles.length <= 0){
                 this.message1 ="Nailed it!";
-                this.message2 ="Can you do it faster than " + this.formatTimer () + 'seconds?';
+                this.message2 ="Can you do it faster than " + this.formatTimer () + 'seconds? Refresh the page to begin again!';
             }
             this.ctx.textAlign = 'center';
             this.ctx.font = '30px Bungee';
             this.ctx.fillText(this.message1, this.width * 0.5, this.height *0.5 -40)
             this.ctx.font = '15px Bungee';
             this.ctx.fillText(this.message2, this.width * 0.5, this.height *0.5 -20 )
-            this.ctx.fillText("Press 'R' to try again!", this.width * 0.5, this.height *0.5 )
         }
         if(this.player.energy <=20)this.ctx.fillStyle = 'red';
         else if (this.player.energy >= this.player.maxEnergy) this.ctx.fillStyle ='orangered';
@@ -145,24 +144,30 @@ class Game {
     }   
 }
 
-window.addEventListener('load', function(){
+window.addEventListener('load', function() {
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
     canvas.width = 720;
     canvas.height = 720;
 
     const game = new Game(canvas, ctx);
-    game.render();
 
-    let lastTime = 0;
-    function animate (timeStamp){
-        if (!lastTime ) lastTime = timeStamp;
+    let lastTime = null;
+
+    function animate(timeStamp) {
+        if (!lastTime) lastTime = timeStamp;
         const deltaTime = timeStamp - lastTime;
         lastTime = timeStamp;
-        ctx.clearRect(0,0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.render(deltaTime);
         requestAnimationFrame(animate);
     }
+
     
-    requestAnimationFrame(animate);
+    function startGame() {
+        document.getElementById('overlay').style.display = 'none'; 
+        requestAnimationFrame(animate);
+    }
+
+    window.startGame = startGame;
 });
