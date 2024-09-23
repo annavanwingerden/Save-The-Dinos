@@ -18,7 +18,7 @@ class Player {
         this.minEnergy = 15;
         this.charging = false;
         this.image = new Image();
-        this.image.src = 'assets/images/bird.png'; 
+        this.image.src = 'assets/images/player.png'; 
     }
 
     draw () {
