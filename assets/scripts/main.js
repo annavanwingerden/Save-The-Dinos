@@ -53,7 +53,7 @@ class Game {
     resize (width, height){
         this.canvas.width= width;
         this.canvas.height= height;
-        //this.ctx.fillStyle = 'blue';
+        this.ctx.fillStyle = '#1f0e8c';
         this.ctx.font = '30px Arsenal SC';
         this.ctx.textAlign='right';
         this.ctx.lineWidth = 3;
