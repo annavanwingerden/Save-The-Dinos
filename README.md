@@ -12,6 +12,6 @@ Next steps:
 - Make speeding less jumpy - perhaps can't speed until colour has changed which is based on time to recharge
 - Make the overlay more visually interesting (eg. dino soaring around)
 - Make the game unlimited and so that scroll speed increases as time goes higher
-- Launch on mobile?? 
+- Launch as a mobile app?? 
 
 You can access the game [here](https://annavanwingerden.github.io/SideScroll-Game-JS/)

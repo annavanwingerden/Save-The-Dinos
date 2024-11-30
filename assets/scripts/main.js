@@ -135,6 +135,8 @@ class Game {
             this.ctx.font = '15px Bungee';
             this.ctx.fillText(this.message2, this.width * 0.5, this.height *0.5 -20 )
         }
+        this.
+        //adding restart button logic - use the startGame logic that's at the bottom of this file
         if(this.player.energy <=20)this.ctx.fillStyle = 'red';
         else if (this.player.energy >= this.player.maxEnergy) this.ctx.fillStyle ='orangered';
         for (let i = 0; i < this.player.energy; i++){
