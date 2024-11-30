@@ -130,13 +130,13 @@ class Game {
                 this.message2 ="Can you do it faster than " + this.formatTimer () + 'seconds? Refresh the page to begin again!';
             }
             this.ctx.textAlign = 'center';
-            this.ctx.font = '30px Bungee';
+            this.ctx.font = '30px Arsenal SC';
             this.ctx.fillText(this.message1, this.width * 0.5, this.height *0.5 -40)
-            this.ctx.font = '15px Bungee';
+            this.ctx.font = '15px Arsenal SC';
             this.ctx.fillText(this.message2, this.width * 0.5, this.height *0.5 -20 )
+            
         }
-        this.
-        //adding restart button logic - use the startGame logic that's at the bottom of this file
+        
         if(this.player.energy <=20)this.ctx.fillStyle = 'red';
         else if (this.player.energy >= this.player.maxEnergy) this.ctx.fillStyle ='orangered';
         for (let i = 0; i < this.player.energy; i++){
@@ -170,6 +170,7 @@ window.addEventListener('load', function() {
         document.getElementById('overlay').style.display = 'none'; 
         requestAnimationFrame(animate);
     }
+
 
     window.startGame = startGame;
 });
