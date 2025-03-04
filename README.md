@@ -1,6 +1,9 @@
 # Save the Dinos
 A fun and challenging side-scrolling game designed to test reflexes and timing. Inspired by Flappy Bird, this project was created to explore game mechanics using only vanilla JavaScript, HTML, and CSS.
 
+--- 
+You can access the game [here](https://annavanwingerden.github.io/SideScroll-Game-JS/)
+--- 
 ## Overview
 This is a side-scrolling game inspired by Flappy Bird, built using only vanilla JavaScript, HTML, and CSS.
 
@@ -22,6 +25,3 @@ This is a side-scrolling game inspired by Flappy Bird, built using only vanilla 
 **Long-Term (Ongoing Enhancements):**
 - Enhance the visual appeal of the overlay (e.g., animated dino soaring around)
 
---- 
-
-You can access the game [here](https://annavanwingerden.github.io/SideScroll-Game-JS/)
