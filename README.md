@@ -1,17 +1,27 @@
-I built the game skeleton for my game using Franks laboratory's tutorial on Side-Scrolling Games. 
-I followed this up to 1.27.5 and it can be accessed [here](https://www.youtube.com/watch?v=vGRbs-HqBJE/).
+# Save the Dinos
+A fun and challenging side-scrolling game designed to test reflexes and timing. Inspired by Flappy Bird, this project was created to explore game mechanics using only vanilla JavaScript, HTML, and CSS.
 
-This was more advanced than I expected - and it took longer to complete & understand.
+## Overview
+This is a side-scrolling game inspired by Flappy Bird, built using only vanilla JavaScript, HTML, and CSS.
 
-Hence the features I added were quite basic: 
-- Game Instructions: I added an overlay with the game instructions & a button to begin. 
-- Player + Obstacles: I added a bird image as the player and a turtle as the obstacles
+## Features
+- **Fully responsive design** – Ensures smooth gameplay across all devices, from desktops to mobile phones.
+- **Timer to track gameplay duration** – Allows players to challenge themselves by keeping track of their survival time.
+- **Rechargeable energy system for players** – Adds a strategic element where players must manage their energy to maintain flight.
+- **Speed boost functionality** – Introduces an element of risk and reward, allowing players to gain temporary bursts of speed. However, improper timing can make maneuvering more challenging, increasing the difficulty of avoiding obstacles.
 
-Next steps: 
-- Add restart logic: event listener when game is over + restart function
-- Make speeding less jumpy - perhaps can't speed until colour has changed which is based on time to recharge
-- Make the overlay more visually interesting (eg. dino soaring around)
-- Make the game unlimited and so that scroll speed increases as time goes higher
-- Launch as a mobile app?? 
+## Future Developments
+### Next Steps (Planned Timeline)
+**Short-Term (Next 2 Weeks):**
+- Add restart logic: Implement an event listener for game-over detection and a restart function
+- Introduce in-game instructions for first-time players
+
+**Mid-Term (Next Month):**
+- Improve speed boost mechanics to make transitions smoother (e.g., prevent boosting until the color changes based on recharge time)
+
+**Long-Term (Ongoing Enhancements):**
+- Enhance the visual appeal of the overlay (e.g., animated dino soaring around)
+
+--- 
 
 You can access the game [here](https://annavanwingerden.github.io/SideScroll-Game-JS/)
